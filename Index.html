@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MINZZ STORE - Topup Game Manual</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #fff; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: #222; padding: 20px; border-radius: 10px; }
+    h1 { text-align: center; }
+    label, select, input, button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    select, input, button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background: #00c853;
+      color: white;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00b342;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MINZZ SHOP</h1>
+    <form id="topupForm">
+      <label for="game">Pilih Game:</label>
+      <select id="game" required onchange="updateOptions()">
+        <option value="">-- Pilih Game --</option>
+        <option value="MLBB">Mobile Legends</option>
+        <option value="Free Fire">Free Fire</option>
+        <option value="PUBG">PUBG Mobile</option>
+      </select>
+
+      <label for="userId">User ID + Server</label>
+      <input type="text" id="userId" placeholder="Contoh: 12345678(1234)" required>
+
+      <div id="mlbbDiamonds" class="hidden">
+        <label for="mlbb">Pilih Paket Diamond MLBB:</label>
+        <select id="mlbb">
+          <option value="14 DIAMOND - RM 1.00">14 DIAMOND - RM 1.00</option>
+          <option value="42 DIAMOND - RM 3.30">42 DIAMOND - RM 3.30</option>
+          <option value="70 DIAMOND - RM 5.50">70 DIAMOND - RM 5.50</option>
+          <option value="140 DIAMOND - RM 10.00">140 DIAMOND - RM 10.00</option>
+          <option value="182 DIAMOND - RM 12.50">182 DIAMOND - RM 12.50</option>
+          <option value="284 DIAMOND - RM 20.00">284 DIAMOND - RM 20.00</option>
+          <option value="326 DIAMOND - RM 22.00">326 DIAMOND - RM 22.00</option>
+          <option value="443 DIAMOND - RM 29.50">443 DIAMOND - RM 29.50</option>
+          <option value="513 DIAMOND - RM 34.00">513 DIAMOND - RM 34.00</option>
+          <option value="639 DIAMOND - RM 43.00">639 DIAMOND - RM 43.00</option>
+          <option value="772 DIAMOND - RM 50.00">772 DIAMOND - RM 50.00</option>
+          <option value="870 DIAMOND - RM 56.00">870 DIAMOND - RM 56.00</option>
+          <option value="1071 DIAMOND - RM 68.00">1071 DIAMOND - RM 68.00</option>
+          <option value="1285 DIAMOND - RM 82.00">1285 DIAMOND - RM 82.00</option>
+          <option value="1355 DIAMOND - RM 87.00">1355 DIAMOND - RM 87.00</option>
+          <option value="1460 DIAMOND - RM 92.00">1460 DIAMOND - RM 92.00</option>
+          <option value="1530 DIAMOND - RM 97.00">1530 DIAMOND - RM 97.00</option>
+          <option value="1656 DIAMOND - RM 106.00">1656 DIAMOND - RM 106.00</option>
+          <option value="1712 DIAMOND - RM 110.00">1712 DIAMOND - RM 110.00</option>
+          <option value="1889 DIAMOND - RM 121.00">1889 DIAMOND - RM 121.00</option>
+          <option value="2015 DIAMOND - RM 129.00">2015 DIAMOND - RM 129.00</option>
+          <option value="2162 DIAMOND - RM 139.00">2162 DIAMOND - RM 139.00</option>
+          <option value="2302 DIAMOND - RM 151.00">2302 DIAMOND - RM 151.00</option>
+          <option value="WEEKLY DIAMOND PASS - RM 8.00">WEEKLY DIAMOND PASS - RM 8.00</option>
+        </select>
+      </div>
+
+      <button type="submit">Pesan via WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    function updateOptions() {
+      const game = document.getElementById("game").value;
+      const mlbbDiv = document.getElementById("mlbbDiamonds");
+      mlbbDiv.classList.toggle("hidden", game !== "MLBB");
+    }
+
+    document.getElementById("topupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const game = document.getElementById("game").value;
+      const userId = document.getElementById("userId").value;
+      const mlbb = document.getElementById("mlbb").value;
+      const waNumber = "60146166722";
+
+      let message = `Halo Admin, saya ingin topup game:\nGame: ${game}\nUser ID: ${userId}`;
+
+      if (game === "MLBB") {
+        message += `\nOrder: ${mlbb}`;
+      } else {
+        message += `\nPaket: Mohon konfirmasi paket untuk game ini.`;
+      }
+
+      const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
+
+</body>
+</html>
