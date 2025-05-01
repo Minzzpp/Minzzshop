@@ -1,1 +1,1 @@
-# Minzzshop
+# Minzzstore
